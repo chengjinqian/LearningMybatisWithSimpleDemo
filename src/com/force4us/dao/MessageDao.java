@@ -19,8 +19,11 @@ public class MessageDao {
 		List<Message> messageList = new ArrayList<Message>();
 		try {
 			sqlSession = dbAccess.getSqlSession();
+			Message message = new Message();
+			message.setCommand(command);
+			message.setDescription(description);
 			// 通过sqlSession执行SQL语句
-			messageList = sqlSession.selectList("Message.queryMessageList");// 这个Message是User.xml里面mapping标签的namespace
+			messageList = sqlSession.selectList("Message.queryMessageList", message);// 这个Message是User.xml里面mapping标签的namespace
 
 		} catch (IOException e) {
 			e.printStackTrace();
