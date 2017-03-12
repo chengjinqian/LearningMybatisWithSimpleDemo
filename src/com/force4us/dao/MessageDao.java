@@ -1,6 +1,7 @@
 package com.force4us.dao;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,10 +16,11 @@ public class MessageDao {
 	public List<Message> queryMessageList(String command, String description) {
 		DBAccess dbAccess = new DBAccess();
 		SqlSession sqlSession = null;
-
+		List<Message> messageList = new ArrayList<Message>();
 		try {
 			sqlSession = dbAccess.getSqlSession();
 			// 通过sqlSession执行SQL语句
+			messageList = sqlSession.selectList("Message.queryMessageList");// 这个Message是User.xml里面mapping标签的namespace
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -27,7 +29,7 @@ public class MessageDao {
 				sqlSession.close();
 			}
 		}
-		return null;
+		return messageList;
 	}
 
 	public static void main(String[] args) {
