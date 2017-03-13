@@ -9,17 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.force4us.service.MaintainService;
 
+/*
+ * 
+ * 批量删除控制层
+ */
 @SuppressWarnings("serial")
-public class DeleteOneServlet extends HttpServlet {
+public class DeleteBatchServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 设置接收参数的编码格式
 		req.setCharacterEncoding("UTF-8");
 		// 接收请求参数
-		String id = req.getParameter("id");
+		String[] ids = req.getParameterValues("id");
 		MaintainService maintainService = new MaintainService();
-		maintainService.deleteOne(id);
-		req.getRequestDispatcher("/List.action").forward(req, resp);
+		maintainService.deleteBatch(ids);
+		req.getRequestDispatcher("List.action").forward(req, resp);
 	}
 
 	@Override

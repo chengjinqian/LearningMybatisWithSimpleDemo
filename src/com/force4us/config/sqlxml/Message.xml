@@ -40,6 +40,14 @@
   <delete id="deleteOne" parameterType="int">
   	delete from message where ID = #{_parameter}
   </delete>
+  
+  <delete id="deleteBatch" parameterType="java.util.List">
+  	delete from message where ID in(
+  		<foreach collection="list" item="item" separator=",">
+  			#{item}
+  		</foreach>
+  		)
+  </delete>
 <!-- 
   <select id="version" parameterType="long" resultType="int">
     SELECT version FROM user WHERE id = #{id,jdbcType=INTEGER}

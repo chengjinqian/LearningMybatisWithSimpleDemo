@@ -41,7 +41,25 @@ public class MessageDao {
 		try {
 			sqlSession = dbAccess.getSqlSession();
 			sqlSession.delete("Message.deleteOne", id);
-			sqlSession.commit();
+			sqlSession.commit();// 注意提交事务
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+
+	}
+
+	public void deleteBatch(List<Integer> ids) {
+		DBAccess dbAccess = new DBAccess();
+		SqlSession sqlSession = null;
+		try {
+			sqlSession = dbAccess.getSqlSession();
+			sqlSession.delete("Message.deleteBatch", ids);
+			sqlSession.commit();// 注意提交事务
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
