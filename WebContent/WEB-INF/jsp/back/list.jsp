@@ -15,8 +15,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<title>内容列表页面</title>
 		<link href="<%= basePath %>resources/css/all.css" rel="stylesheet" type="text/css" />
-		<script src="<%= basePath %>resources/js/jquery-3.1.1.min.js"></script>
-		<script src="<%= basePath %>resources/js/list.js"></script>
+		<script src="<%= basePath %>resources/js/common/jquery-3.1.1.min.js"></script>
+		<script src="<%= basePath %>resources/js/back/list.js"></script>
 		<%String idDelete = request.getParameter("delete");
 		  if(Boolean.parseBoolean(idDelete)){
 			  out.println("<script type = 'text/javascript'>window.alert('删除成功');</script>");

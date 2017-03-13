@@ -36,5 +36,22 @@
   	<servlet-name>DeleteBatchServlet</servlet-name>
   	<url-pattern>/DeleteBatch.action</url-pattern>
   </servlet-mapping>
+    
+  <servlet>
+  	<servlet-name>InitTalkServlet</servlet-name>
+  	<servlet-class>com.force4us.servlet.InitTalkServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>InitTalkServlet</servlet-name>
+  	<url-pattern>/InitTalk.action</url-pattern>
+  </servlet-mapping>
   
+    <servlet>
+  	<servlet-name>AutoReplyServlet</servlet-name>
+  	<servlet-class>com.force4us.servlet.AutoReplyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AutoReplyServlet</servlet-name>
+  	<url-pattern>/AutoReply.action</url-pattern>
+  </servlet-mapping>
 </web-app>
