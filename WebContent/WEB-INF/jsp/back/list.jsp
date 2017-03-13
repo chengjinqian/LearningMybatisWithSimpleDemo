@@ -17,6 +17,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="<%= basePath %>resources/css/all.css" rel="stylesheet" type="text/css" />
 		<script src="<%= basePath %>resources/js/jquery-3.1.1.min.js"></script>
 		<script src="<%= basePath %>resources/js/list.js"></script>
+		<%String idDelete = request.getParameter("delete");
+		  if(Boolean.parseBoolean(idDelete)){
+			  out.println("<script type = 'text/javascript'>window.alert('删除成功');</script>");
+		  }
+		%>
 	</head>
 	<body style="background: #e1e9eb;" >
 		<form action="List.action" id="mainForm" method="post">

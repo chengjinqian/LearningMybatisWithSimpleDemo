@@ -23,7 +23,7 @@ public class DeleteBatchServlet extends HttpServlet {
 		String[] ids = req.getParameterValues("id");
 		MaintainService maintainService = new MaintainService();
 		maintainService.deleteBatch(ids);
-		req.getRequestDispatcher("List.action").forward(req, resp);
+		req.getRequestDispatcher("List.action?delete=true").forward(req, resp);
 	}
 
 	@Override

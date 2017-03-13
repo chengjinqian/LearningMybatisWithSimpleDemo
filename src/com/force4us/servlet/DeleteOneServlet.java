@@ -19,7 +19,7 @@ public class DeleteOneServlet extends HttpServlet {
 		String id = req.getParameter("id");
 		MaintainService maintainService = new MaintainService();
 		maintainService.deleteOne(id);
-		req.getRequestDispatcher("/List.action").forward(req, resp);
+		req.getRequestDispatcher("/List.action?delete=true").forward(req, resp);
 	}
 
 	@Override
