@@ -35,10 +35,28 @@ public class MessageDao {
 		return messageList;
 	}
 
-	public static void main(String[] args) {
-		MessageDao messageDao = new MessageDao();
-		messageDao.queryMessageList("", "");
+	public void deleteOne(int id) {
+		DBAccess dbAccess = new DBAccess();
+		SqlSession sqlSession = null;
+		try {
+			sqlSession = dbAccess.getSqlSession();
+			sqlSession.delete("Message.deleteOne", id);
+			sqlSession.commit();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+
 	}
+
+	// public static void main(String[] args) {
+	// MessageDao messageDao = new MessageDao();
+	// messageDao.queryMessageList("", "");
+	// }
 	/*
 	 * 传统jdbc方式：根据查询条件查询消息列表
 	 */
