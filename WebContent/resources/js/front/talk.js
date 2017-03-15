@@ -23,15 +23,15 @@ function send() {
 	$.ajax({
 		url : $("#basePath").val() + "AutoReply.action",
 		type : "POST",
-		dataType : "text",
+		dataType : "text",//预期服务器返回的数据类型
 		timeout : 10000,
-		success : function (data) {
+		success : function (data) {//请求成功后调用的回调函数，data代表请求返回的内容，与下面的data无关
 			appendDialog("talk_recordboxme","My账号",content);
 			appendDialog("talk_recordbox","公众号",data);
 			$("#content").val("");
 			render();
 		},
-		data : {"content":content}
+		data : {"content":content}//发送到服务器的数据
 	});
 }
 
