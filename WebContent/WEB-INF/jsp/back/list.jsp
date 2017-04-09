@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<td><input type="checkbox" name="id" value="${message.id }"/></td>
 									<td>${status.index + 1 }</td>
 									<td>${message.command }</td>
-									<td>${message.description }</td>
+									<td>${message.description}</td>
 									<td>
 										<a href="#">修改</a>&nbsp;&nbsp;&nbsp;
 										<a href="${basepath }DeleteOne.action?id=${message.id }">删除</a>

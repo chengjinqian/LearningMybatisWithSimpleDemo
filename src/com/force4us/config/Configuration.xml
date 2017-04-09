@@ -31,6 +31,14 @@
     <typeAlias alias="UserAlias" type="org.apache.ibatis.submitted.complex_property.User"/>
   </typeAliases>
  -->
+ <typeAliases>
+ 	
+ 	<typeAlias alias="Command" type="com.force4us.bean.Command"/>
+	<typeAlias alias="CommandContent" type="com.force4us.bean.CommandContent"/>
+	
+	
+</typeAliases>
+
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC">
@@ -47,6 +55,8 @@
 
   <mappers>
     <mapper resource="com/force4us/config/sqlxml/Message.xml"/>
+    <mapper resource="com/force4us/config/sqlxml/CommandMapper.xml"/>
+    <mapper resource="com/force4us/config/sqlxml/CommandContentMapper.xml"/>
   </mappers>
 
 </configuration>

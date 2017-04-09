@@ -20,7 +20,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Message">
+<mapper namespace="com.force4us.config.sqlxml.MessageMapper">
 
   <resultMap type="com.force4us.bean.Message" id="MessageResult">
     <id column="ID" jdbcType="INTEGER" property="id"/>  

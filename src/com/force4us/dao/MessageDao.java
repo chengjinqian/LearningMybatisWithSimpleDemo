@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.force4us.bean.Message;
+import com.force4us.config.sqlxml.MessageMapper;
 import com.force4us.db.DBAccess;
 
 public class MessageDao {
@@ -23,8 +24,10 @@ public class MessageDao {
 			message.setCommand(command);
 			message.setDescription(description);
 			// 通过sqlSession执行SQL语句
-			messageList = sqlSession.selectList("Message.queryMessageList", message);// 这个Message是User.xml里面mapping标签的namespace
-
+			// messageList = sqlSession.selectList("Message.queryMessageList",
+			// message);// 这个Message是User.xml里面mapping标签的namespace
+			MessageMapper mapper = sqlSession.getMapper(MessageMapper.class);
+			messageList = mapper.queryMessageList(message);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -40,7 +43,7 @@ public class MessageDao {
 		SqlSession sqlSession = null;
 		try {
 			sqlSession = dbAccess.getSqlSession();
-			sqlSession.delete("Message.deleteOne", id);
+			sqlSession.delete("com.force4us.config.sqlxml.MessageMapper.deleteOne", id);
 			sqlSession.commit();// 注意提交事务
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -58,7 +61,7 @@ public class MessageDao {
 		SqlSession sqlSession = null;
 		try {
 			sqlSession = dbAccess.getSqlSession();
-			sqlSession.delete("Message.deleteBatch", ids);
+			sqlSession.delete("MessageMapper.deleteBatch", ids);
 			sqlSession.commit();// 注意提交事务
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
