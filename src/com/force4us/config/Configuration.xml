@@ -32,11 +32,8 @@
   </typeAliases>
  -->
  <typeAliases>
- 	
  	<typeAlias alias="Command" type="com.force4us.bean.Command"/>
 	<typeAlias alias="CommandContent" type="com.force4us.bean.CommandContent"/>
-	
-	
 </typeAliases>
 
   <environments default="development">
