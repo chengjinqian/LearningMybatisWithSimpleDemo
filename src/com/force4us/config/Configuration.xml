@@ -33,6 +33,7 @@
  -->
  <typeAliases>
  	<typeAlias alias="Command" type="com.force4us.bean.Command"/>
+ 	<typeAlias alias="Message" type="com.force4us.bean.Message"/>
 	<typeAlias alias="CommandContent" type="com.force4us.bean.CommandContent"/>
 </typeAliases>
 
@@ -54,6 +55,7 @@
     <mapper resource="com/force4us/config/sqlxml/Message.xml"/>
     <mapper resource="com/force4us/config/sqlxml/CommandMapper.xml"/>
     <mapper resource="com/force4us/config/sqlxml/CommandContentMapper.xml"/>
+    <mapper resource="com/force4us/config/sqlxml/PageMapper.xml"/>
   </mappers>
 
 </configuration>

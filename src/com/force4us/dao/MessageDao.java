@@ -3,32 +3,76 @@ package com.force4us.dao;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.force4us.bean.Message;
-import com.force4us.config.sqlxml.MessageMapper;
+import com.force4us.config.sqlxml.PageMapper;
 import com.force4us.db.DBAccess;
 
 public class MessageDao {
 	/*
 	 * mybatis方式： 根据查询条件查询消息列表
 	 */
-	public List<Message> queryMessageList(String command, String description) {
+	public List<Message> queryMessageList(Map<String, Object> parameter) {
 		DBAccess dbAccess = new DBAccess();
 		SqlSession sqlSession = null;
 		List<Message> messageList = new ArrayList<Message>();
 		try {
 			sqlSession = dbAccess.getSqlSession();
-			Message message = new Message();
-			message.setCommand(command);
-			message.setDescription(description);
 			// 通过sqlSession执行SQL语句
 			// messageList = sqlSession.selectList("Message.queryMessageList",
 			// message);// 这个Message是User.xml里面mapping标签的namespace
-			MessageMapper mapper = sqlSession.getMapper(MessageMapper.class);
-			messageList = mapper.queryMessageList(message);
+			PageMapper mapper = sqlSession.getMapper(PageMapper.class);
+			messageList = mapper.queryMessageList(parameter);
 		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return messageList;
+	}
+
+	/**
+	 * 根据查询条件查询消息列表的条数
+	 */
+	public int count(Message message) {
+		DBAccess dbAccess = new DBAccess();
+		SqlSession sqlSession = null;
+		int result = 0;
+		try {
+			sqlSession = dbAccess.getSqlSession();
+			// 通过sqlSession执行SQL语句
+			PageMapper mapper = sqlSession.getMapper(PageMapper.class);
+			result = mapper.count(message);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * 根据查询条件分页查询消息列表
+	 */
+	public List<Message> queryMessageListByPage(Map<String, Object> parameter) {
+		DBAccess dbAccess = new DBAccess();
+		List<Message> messageList = new ArrayList<Message>();
+		SqlSession sqlSession = null;
+		try {
+			sqlSession = dbAccess.getSqlSession();
+			// 通过sqlSession执行SQL语句
+			PageMapper imessage = sqlSession.getMapper(PageMapper.class);
+			messageList = imessage.queryMessageListByPage(parameter);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			if (sqlSession != null) {
