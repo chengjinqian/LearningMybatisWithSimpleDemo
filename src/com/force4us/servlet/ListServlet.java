@@ -39,7 +39,7 @@ public class ListServlet extends HttpServlet {
 
 		// 查询消息列表并传给页面
 
-		req.setAttribute("messageList", queryService.queryMessageList(command, description, page));
+		req.setAttribute("messageList", queryService.queryMessageListByPage(command, description, page));
 		req.setAttribute("command", command);
 		req.setAttribute("description", description);
 		req.setAttribute("page", page);

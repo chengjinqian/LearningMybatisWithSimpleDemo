@@ -31,11 +31,18 @@
     <typeAlias alias="UserAlias" type="org.apache.ibatis.submitted.complex_property.User"/>
   </typeAliases>
  -->
- <typeAliases>
+
+  <typeAliases>
  	<typeAlias alias="Command" type="com.force4us.bean.Command"/>
  	<typeAlias alias="Message" type="com.force4us.bean.Message"/>
 	<typeAlias alias="CommandContent" type="com.force4us.bean.CommandContent"/>
-</typeAliases>
+  </typeAliases>
+
+  <plugins>
+    <plugin interceptor="com.force4us.interceptor.PageInterceptor">
+      <property name="test" value="abc"/>
+    </plugin>
+  </plugins>
 
   <environments default="development">
     <environment id="development">
